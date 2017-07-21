@@ -21,6 +21,7 @@
   "homepage": "https://github.com/preboot/angularjs-webpack",
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-ui-router": "0.4.2",
     "ng-redux": "^3.4.0-beta.1",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"
