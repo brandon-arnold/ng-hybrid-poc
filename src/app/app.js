@@ -1,25 +1,21 @@
 import angular from 'angular';
+import thunkMiddleware from 'redux-thunk';
+import 'ng-redux';
+import { helloWorlds } from '../reducers';
 
-import '../style/app.css';
+angular.module('app', ['ngRedux'])
+       .config(config);
 
-let app = () => {
-  return {
-    template: require('./app.html'),
-    controller: 'AppCtrl',
-    controllerAs: 'app'
-  }
-};
+config.$inject = ['$ngReduxProvider'];
 
-class AppCtrl {
-  constructor() {
-    this.url = 'https://github.com/preboot/angular-webpack';
-  }
+function config($ngReduxProvider) {
+  $ngReduxProvider.createStoreWith(
+    { helloWorlds },
+    [ thunkMiddleware ]
+  );
 }
 
-const MODULE_NAME = 'app';
-
-angular.module(MODULE_NAME, [])
-  .directive('app', app)
-  .controller('AppCtrl', AppCtrl);
-
-export default MODULE_NAME;
+require('./app.controller.js');
+require('./app.directive.js');
+require('./home/home.directive.js');
+require('./home/home.controller.js');
