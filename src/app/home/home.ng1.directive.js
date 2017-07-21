@@ -2,7 +2,7 @@ import angular from 'angular';
 
 let home = () => {
   return {
-    template: require('./home.html'),
+    template: require('./home.ng1.html'),
     controller: 'HomeCtrl',
     controllerAs: 'home'
   }

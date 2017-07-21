@@ -15,7 +15,7 @@ function config($ngReduxProvider) {
   );
 }
 
-require('./app.controller.js');
-require('./app.directive.js');
-require('./home/home.directive.js');
-require('./home/home.controller.js');
+require('./app.ng1.controller.js');
+require('./app.ng1.directive.js');
+require('./home/home.ng1.directive.js');
+require('./home/home.ng1.controller.js');

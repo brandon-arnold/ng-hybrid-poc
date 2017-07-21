@@ -2,7 +2,7 @@ import angular from 'angular';
 
 let app = () => {
   return {
-    template: require('./app.html'),
+    template: require('./app.ng1.html'),
     controller: 'AppCtrl',
     controllerAs: 'app'
   }
