@@ -1,9 +1,12 @@
 import angular from 'angular';
+import { UpgradeAdapter } from '@angular/upgrade';
 import thunkMiddleware from 'redux-thunk';
 import 'ng-redux';
 import 'angular-ui-router';
 import './app.css';
 import { helloWorlds } from '../reducers';
+
+var adapter = new UpgradeAdapter();
 
 angular.module('app', ['ngRedux', 'ui.router'])
        .config(config);
@@ -27,3 +30,5 @@ function config($ngReduxProvider, $locationProvider, $stateProvider) {
 require('./home/home.ng1.js');
 require('./home/home.ng1.directive.js');
 require('./home/home.ng1.controller.js');
+
+adapter.bootstrap(document.body, ['app']);
