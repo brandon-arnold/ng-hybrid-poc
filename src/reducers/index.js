@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
 import {
-  FETCH_HELLO_WORLDS,
-  RECEIVE_HELLO_WORLDS
+  FETCH_NEW_HELLO_WORLD,
+  RECEIVE_NEW_HELLO_WORLD
 } from '../actions';
 
 export const initialState = {
@@ -13,9 +13,9 @@ export const initialState = {
 
 export const helloWorlds = (helloWorldState = { collection: [] }, action) => {
   switch(action.type) {
-    case RECEIVE_HELLO_WORLDS:
+    case RECEIVE_NEW_HELLO_WORLD:
       return Object.assign({}, helloWorldState, {
-        collection: action.payload
+        collection: [...helloWorldState.collection, action.payload]
       });
     default:
       return helloWorldState;

@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-import { fetchHelloWorlds } from '../../actions';
+import { fetchNewHelloWorld } from '../../actions';
 
 class HomeCtrl {
   constructor($ngRedux) {
@@ -9,8 +9,8 @@ class HomeCtrl {
   }
 
   $onInit() {
-    this.unsubscribe = this.$ngRedux.connect(this.mapStateToTarget, { fetchHelloWorlds })(this);
-    this.fetchHelloWorlds();
+    this.unsubscribe = this.$ngRedux.connect(this.mapStateToTarget, { fetchNewHelloWorld })(this);
+    this.fetchNewHelloWorld();
   }
 
   mapStateToTarget(state) {
