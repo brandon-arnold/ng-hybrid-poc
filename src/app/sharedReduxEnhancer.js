@@ -1,10 +1,10 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 
-import { helloWorlds } from '../reducers';
+import { helloWorlds, initialState } from '../reducers';
 
-var store = createStore(helloWorlds, applyMiddleware(thunkMiddleware));
+var store = createStore(helloWorlds, initialState, applyMiddleware(thunkMiddleware));
 
-export default function sharedReduxEnhancer(createStore) {
+export function sharedReduxEnhancer(createStore) {
   return () => store;
 };

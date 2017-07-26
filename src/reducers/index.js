@@ -9,12 +9,17 @@ export const initialState = {
   }
 };
 
-export const helloWorlds = (helloWorldState = { collection: [] }, action) => {
+export const helloWorlds = (helloWorldState = initialState, action) => {
+  debugger;
   switch(action.type) {
     case RECEIVE_NEW_HELLO_WORLD:
-      return Object.assign({}, helloWorldState, {
-        collection: [...helloWorldState.collection, action.payload]
+      var newState = Object.assign({}, helloWorldState, {
+        helloWorlds: Object.assign({}, helloWorldState.helloWorlds, {
+          collection: [...helloWorldState.helloWorlds.collection, action.payload]
+        })
       });
+
+      return newState;
     default:
       return helloWorldState;
   }

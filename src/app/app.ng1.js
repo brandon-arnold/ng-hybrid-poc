@@ -10,8 +10,8 @@ angular.module('app', ['ngRedux', 'ui.router'])
 config.$inject = ['$ngReduxProvider', '$locationProvider', '$stateProvider'];
 
 function config($ngReduxProvider, $locationProvider, $stateProvider) {
-  $ngReduxProvider.createStoreWith(state => state, [], sharedReduxEnhancer);
-  
+  $ngReduxProvider.createStoreWith(state => state, [], [sharedReduxEnhancer]);
+
   $locationProvider.html5Mode({
     enabled: false,
     requireBase: false
