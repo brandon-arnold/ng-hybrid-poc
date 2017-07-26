@@ -1,9 +1,8 @@
 import angular from 'angular';
-import thunkMiddleware from 'redux-thunk';
 import 'ng-redux';
-import 'angular-ui-router';
 import './app.css';
-import { helloWorlds } from '../reducers';
+import '@uirouter/angularjs';
+import { sharedReduxEnhancer } from './sharedReduxEnhancer';
 
 angular.module('app', ['ngRedux', 'ui.router'])
        .config(config);
@@ -11,10 +10,7 @@ angular.module('app', ['ngRedux', 'ui.router'])
 config.$inject = ['$ngReduxProvider', '$locationProvider', '$stateProvider'];
 
 function config($ngReduxProvider, $locationProvider, $stateProvider) {
-  $ngReduxProvider.createStoreWith(
-    { helloWorlds },
-    [ thunkMiddleware ]
-  );
+  $ngReduxProvider.createStoreWith(state => state, [], sharedReduxEnhancer);
   
   $locationProvider.html5Mode({
     enabled: false,

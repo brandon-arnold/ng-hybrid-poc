@@ -30,7 +30,7 @@ module.exports = function makeWebpackConfig() {
    * Karma will set this when it's a test build
    */
   config.entry = isTest ? void 0 : {
-    polyfills: './src/polyfills.ts',
+//    polyfills: './src/polyfills.ts',
     app: './src/app/app.ng2.ts'
   };
 //  vendor: './src/vendor.ts',
