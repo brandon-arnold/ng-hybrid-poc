@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 
-import { IAppState } from '../reduxTypes';
-import { fetchNewHelloWorld } from '../../actions';
+import { IAppState } from '../../reduxTypes';
+import { fetchNewHelloWorld } from '../../../actions';
 
 class HelloWorlds {
     collection: Array<String>;
@@ -13,7 +13,7 @@ class HelloWorlds {
     selector: 'hello-worlds-ng2',
     template: require('./hello-worlds-ng2.ng2.html')
 })
-export class HelloWorldsComponent {
+export class HelloWorldsNg2Component {
 
     helloWorlds: HelloWorlds;
 

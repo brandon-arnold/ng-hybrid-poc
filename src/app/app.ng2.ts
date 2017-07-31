@@ -9,16 +9,18 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { Store } from 'redux';
 import { downgradeComponent } from '@angular/upgrade/static';
+import { UIRouterUpgradeModule } from '@uirouter/angular-hybrid';
+import { UrlService } from '@uirouter/core';
 import { IAppState } from './reduxTypes';
-import { HelloWorldsComponent } from './home/hello-worlds-ng2.component';
+import { HelloWorldsNg2Component } from './components/hello-worlds-ng2/hello-worlds-ng2.component';
 import { initialState } from '../reducers';
 
 let ng2Redux: any;
 
 @NgModule({
-    entryComponents: [HelloWorldsComponent],
-    declarations: [HelloWorldsComponent],
-    imports: [BrowserModule, UpgradeModule, NgReduxModule]
+    entryComponents: [HelloWorldsNg2Component],
+    declarations: [HelloWorldsNg2Component],
+    imports: [BrowserModule, UpgradeModule, NgReduxModule, UIRouterUpgradeModule]
 })
 class AppModule {
   constructor(
@@ -27,7 +29,6 @@ class AppModule {
   ) {
       ng2Redux = this.ngRedux;
       ng2Redux.provideStore(store as Store<IAppState>);
-      // this.ngRedux.configureStore(state => state, initialState, [], [sharedReduxEnhancer]);
   }
   ngDoBootstrap() { }
 }
@@ -41,14 +42,14 @@ angular.element(document).ready(function () {
     upgrade.bootstrap(document.body, ['app']);
 
     // Intialize the Angular Module (get() any UIRouter service from DI to initialize it)
-    //const url: UrlService = injector.get(UrlService);
+    const url: UrlService = injector.get(UrlService);
 
     // Instruct UIRouter to listen to URL changes
-    // url.listen();
-    // url.sync();
+    url.listen();
+    url.sync();
   });
 });
 
 angular.module('app')
   .directive('helloWorldsNg2',
-             downgradeComponent({component: HelloWorldsComponent}) as angular.IDirectiveFactory);
+             downgradeComponent({component: HelloWorldsNg2Component}) as angular.IDirectiveFactory);
