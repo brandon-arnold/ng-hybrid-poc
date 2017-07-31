@@ -9,7 +9,6 @@ angular
       template: '<ui-view />',
     }).state('home.home', {
       url: '/',
-      template: require('./home.ng1.html'),
-      controller: 'HomeCtrl as home',
+      template: require('./home.ng1.html')
     });
   }]);

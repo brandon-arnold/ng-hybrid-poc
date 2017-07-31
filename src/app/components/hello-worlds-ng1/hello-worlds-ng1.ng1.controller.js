@@ -4,7 +4,6 @@ import { fetchNewHelloWorld } from '../../../actions';
 
 class HelloWorldsNg1Ctrl {
   constructor($ngRedux) {
-    this.url = 'https://github.com/preboot/angular-webpack';
     this.$ngRedux = $ngRedux;
   }
 

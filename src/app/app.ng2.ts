@@ -9,8 +9,6 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { NgReduxModule, NgRedux } from '@angular-redux/store';
 import { Store } from 'redux';
 import { downgradeComponent } from '@angular/upgrade/static';
-import { UIRouterUpgradeModule } from '@uirouter/angular-hybrid';
-import { UrlService } from '@uirouter/core';
 import { IAppState } from './reduxTypes';
 import { HelloWorldsNg2Component } from './components/hello-worlds-ng2/hello-worlds-ng2.component';
 import { initialState } from '../reducers';
@@ -20,7 +18,7 @@ let ng2Redux: any;
 @NgModule({
     entryComponents: [HelloWorldsNg2Component],
     declarations: [HelloWorldsNg2Component],
-    imports: [BrowserModule, UpgradeModule, NgReduxModule, UIRouterUpgradeModule]
+    imports: [BrowserModule, UpgradeModule, NgReduxModule ]
 })
 class AppModule {
   constructor(
@@ -42,11 +40,11 @@ angular.element(document).ready(function () {
     upgrade.bootstrap(document.body, ['app']);
 
     // Intialize the Angular Module (get() any UIRouter service from DI to initialize it)
-    const url: UrlService = injector.get(UrlService);
+    // const url: UrlService = injector.get(UrlService);
 
     // Instruct UIRouter to listen to URL changes
-    url.listen();
-    url.sync();
+    // url.listen();
+    // url.sync();
   });
 });
 

@@ -1,8 +1,8 @@
-<button ng-click="hw.fetchNewHelloWorld()">Add new hello world</button>
+<button ng-click="hw1.fetchNewHelloWorld()">Add new hello world from ng1</button>
 
-<h5>$ngRedux store.helloWorld:</h5>
+<h5>$ngRedux 1 store.helloWorld:</h5>
 <ul>
-  <li ng-repeat="helloWorld in hw.helloWorlds track by $index">
+  <li ng-repeat="helloWorld in hw1.helloWorlds track by $index">
     {{ helloWorld }}
   </li>
 </ul>
