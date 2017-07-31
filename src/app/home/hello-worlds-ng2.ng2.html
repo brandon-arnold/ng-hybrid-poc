@@ -1,0 +1,8 @@
+<button (click)="fetchNewHelloWorld()">Add new hello world from ng2</button>
+
+<h5>ngRedux 2 store.helloWorld:</h5>
+<ul *ngIf="helloWorlds">
+  <li *ngFor="let helloWorld of helloWorlds.collection">
+    {{ helloWorld }}
+  </li>
+</ul>

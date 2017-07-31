@@ -38,7 +38,7 @@
     "redux-thunk": "^2.2.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.4.2",
-    "zone.js": "^0.8.14"
+    "zone.js": "=0.8.14"
   },
   "devDependencies": {
     "@types/angular": "^1.6.27",

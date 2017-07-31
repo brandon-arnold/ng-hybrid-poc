@@ -30,18 +30,18 @@ module.exports = function makeWebpackConfig() {
    * Karma will set this when it's a test build
    */
   config.entry = isTest ? void 0 : {
-//    polyfills: './src/polyfills.ts',
+    //    polyfills: './src/polyfills.ts',
     app: './src/app/app.ng2.ts'
   };
-//  vendor: './src/vendor.ts',
+  //  vendor: './src/vendor.ts',
 
-      /**
-       * Output
-       * Reference: http://webpack.github.io/docs/configuration.html#output
-       * Should be an empty object if it's generating a test build
-       * Karma will handle setting it up for you when it's a test build
-       */
-      config.output = isTest ? {} : {
+  /**
+   * Output
+   * Reference: http://webpack.github.io/docs/configuration.html#output
+   * Should be an empty object if it's generating a test build
+   * Karma will handle setting it up for you when it's a test build
+   */
+  config.output = isTest ? {} : {
     // Absolute output directory
     path: __dirname + '/dist',
 
@@ -57,6 +57,11 @@ module.exports = function makeWebpackConfig() {
     // Only adds hash in build mode
     chunkFilename: isProd ? '[name].[hash].js' : '[name].bundle.js'
   };
+
+  config.resolve = {
+    extensions: ['.ts', '.js']
+  };
+ 
 
   /**
    * Devtool
@@ -92,50 +97,50 @@ module.exports = function makeWebpackConfig() {
       ],
       exclude: /node_modules/
     }, {
-        // JS LOADER
-        // Reference: https://github.com/babel/babel-loader
-        // Transpile .js files using babel-loader
-        // Compiles ES6 and ES7 into ES5 code
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
-      }, {
-        // CSS LOADER
-        // Reference: https://github.com/webpack/css-loader
-        // Allow loading css through js
-        //
-        // Reference: https://github.com/postcss/postcss-loader
-        // Postprocess your css with PostCSS plugins
-        test: /\.css$/,
-        // Reference: https://github.com/webpack/extract-text-webpack-plugin
-        // Extract css files in production builds
-        //
-        // Reference: https://github.com/webpack/style-loader
-        // Use style-loader in development.
+      // JS LOADER
+      // Reference: https://github.com/babel/babel-loader
+      // Transpile .js files using babel-loader
+      // Compiles ES6 and ES7 into ES5 code
+      test: /\.js$/,
+      loader: 'babel-loader',
+      exclude: /node_modules/
+    }, {
+      // CSS LOADER
+      // Reference: https://github.com/webpack/css-loader
+      // Allow loading css through js
+      //
+      // Reference: https://github.com/postcss/postcss-loader
+      // Postprocess your css with PostCSS plugins
+      test: /\.css$/,
+      // Reference: https://github.com/webpack/extract-text-webpack-plugin
+      // Extract css files in production builds
+      //
+      // Reference: https://github.com/webpack/style-loader
+      // Use style-loader in development.
 
-        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
-          fallbackLoader: 'style-loader',
-          loader: [
-            {loader: 'css-loader', query: {sourceMap: true}},
-            {loader: 'postcss-loader'}
-          ],
-        })
-      }, {
-        // ASSET LOADER
-        // Reference: https://github.com/webpack/file-loader
-        // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
-        // Rename the file using the asset hash
-        // Pass along the updated reference to your code
-        // You can add here any file extension you want to get copied to your output
-        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
-        loader: 'file-loader'
-      }, {
-        // HTML LOADER
-        // Reference: https://github.com/webpack/raw-loader
-        // Allow loading html through js
-        test: /\.html$/,
-        loader: 'raw-loader'
-      }]
+      loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({
+        fallbackLoader: 'style-loader',
+        loader: [
+          {loader: 'css-loader', query: {sourceMap: true}},
+          {loader: 'postcss-loader'}
+        ],
+      })
+    }, {
+      // ASSET LOADER
+      // Reference: https://github.com/webpack/file-loader
+      // Copy png, jpg, jpeg, gif, svg, woff, woff2, ttf, eot files to output
+      // Rename the file using the asset hash
+      // Pass along the updated reference to your code
+      // You can add here any file extension you want to get copied to your output
+      test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|ttf|eot)$/,
+      loader: 'file-loader'
+    }, {
+      // HTML LOADER
+      // Reference: https://github.com/webpack/raw-loader
+      // Allow loading html through js
+      test: /\.html$/,
+      loader: 'raw-loader'
+    }]
   };
 
   // ISTANBUL LOADER
